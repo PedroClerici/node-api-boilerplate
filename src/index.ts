@@ -1,13 +1,13 @@
+import "reflect-metadata";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { env } from "@/config/env";
 import { logger } from "@/config/logger";
+import { users } from "./api/modules/users/users.controller";
 
 const app = new Hono();
 
-app.get("*", async (ctx) => {
-	return ctx.text("Hello, world!");
-});
+app.route("/users", users);
 
 logger.info(`Server is running on port ${env.PORT}`);
 
