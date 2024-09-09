@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"skipLibCheck": true,
+		"types": ["node"],
+		"outDir": "dist",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	}
+}
