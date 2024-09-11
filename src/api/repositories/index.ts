@@ -9,5 +9,5 @@ export interface UsersRepository {
 
 	update(id: string, data: User): Promise<User | undefined>;
 
-	delete(id: "string"): Promise<void>;
+	delete(id: string): Promise<void>;
 }

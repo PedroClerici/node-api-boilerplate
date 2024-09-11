@@ -33,6 +33,6 @@ export class DrizzleUsersRepository implements UsersRepository {
 	}
 
 	async delete(id: string): Promise<void> {
-		database.delete(users).where(eq(users.id, id));
+		await database.delete(users).where(eq(users.id, id));
 	}
 }

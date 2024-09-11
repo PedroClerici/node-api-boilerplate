@@ -11,6 +11,12 @@ importers:
       '@hono/node-server':
         specifier: ^1.12.2
         version: 1.12.2(hono@4.5.11)
+      '@hono/zod-openapi':
+        specifier: ^0.16.0
+        version: 0.16.0(hono@4.5.11)(zod@3.23.8)
+      '@scalar/hono-api-reference':
+        specifier: ^0.5.145
+        version: 0.5.145(hono@4.5.11)
       '@types/node':
         specifier: ^22.5.4
         version: 22.5.4
@@ -23,9 +29,6 @@ importers:
       drizzle-orm:
         specifier: ^0.33.0
         version: 0.33.0(postgres@3.4.4)
-      drizzle-zod:
-        specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.33.0(postgres@3.4.4))(zod@3.23.8)
       hono:
         specifier: ^4.5.11
         version: 4.5.11
@@ -53,7 +56,7 @@ importers:
         version: 0.24.2
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(postcss@8.4.45)(tsx@4.19.0)(typescript@5.5.4)
+        version: 8.2.4(postcss@8.4.45)(tsx@4.19.0)(typescript@5.5.4)(yaml@2.5.1)
       tsx:
         specifier: ^4.19.0
         version: 4.19.0
@@ -69,6 +72,11 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@asteasolutions/zod-to-openapi@7.1.1':
+    resolution: {integrity: sha512-lF0d1gAc0lYLO9/BAGivwTwE2Sh9h6CHuDcbk5KnGBfIuAsAkDC+Fdat4dkQY3CS/zUWKHRmFEma0B7X132Ymw==}
+    peerDependencies:
+      zod: ^3.20.2
 
   '@biomejs/biome@1.8.3':
     resolution: {integrity: sha512-/uUV3MV+vyAczO+vKrPdOW0Iaet7UnJMU4bNMinggGJTAnBPjCoLEYcyYtYHNnUNYlv4xZMH6hVIQCAozq8d5w==}
@@ -690,6 +698,19 @@ packages:
     peerDependencies:
       hono: ^4
 
+  '@hono/zod-openapi@0.16.0':
+    resolution: {integrity: sha512-jTnccfMTxDmA50FZeyTDD5oNDpcYo0qPzugwMuinnEQRYHLEqOXLv+sP89KNZWCGcL3Ccl+cr5GGE4yxenozqw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      hono: '>=4.3.6'
+      zod: 3.*
+
+  '@hono/zod-validator@0.2.2':
+    resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
+
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
     engines: {node: '>=12'}
@@ -808,11 +829,32 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@scalar/hono-api-reference@0.5.145':
+    resolution: {integrity: sha512-ySfQ+fz1hyX/aWIZ+7Ict/LX3Y4uNVXhBZJqORI0yDUNfw/eqYUH47PHLqg3a+j7Und54RqQY8TKQkH9xQkzog==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      hono: ^4.0.0
+
+  '@scalar/openapi-types@0.1.0':
+    resolution: {integrity: sha512-UxyIkRqC2rbvQJhenA+KdgAbLNUPjqI5CHhZmTuxiv7De9ZJLRVTQCa0JxNqSJ/b51VKpqZ/pDLvjbQpxGFWcA==}
+    engines: {node: '>=18'}
+
+  '@scalar/themes@0.9.28':
+    resolution: {integrity: sha512-2pFGnjSBL2daPA5roRNRDy8xAHpeTI5QYpfyTj88iIaYT68EVnDUheUA2i3vRB705FCGEbDR0xKD7poTSfAYng==}
+    engines: {node: '>=18'}
+
+  '@scalar/types@0.0.7':
+    resolution: {integrity: sha512-ylMAM8Kx+mSVu1yBipz7h2pQrEXyMTHkYWc/UigGdn3dpuBArTnkBdJte85yH/7+R630HGm3FSbAHSioOCT+vA==}
+    engines: {node: '>=18'}
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
   '@types/node@22.5.4':
     resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
+
+  '@unhead/schema@1.11.2':
+    resolution: {integrity: sha512-ALyIIA0084JjGQJD6tJetQdqVNw/V6d2LaCC06jSm+JUqxsRWRZcSbNZUg5xr0T4xQPrefZYrGp76PbOdotPbQ==}
 
   '@vitest/expect@2.0.5':
     resolution: {integrity: sha512-yHZtwuP7JZivj65Gxoi8upUN2OzHTi3zVfjwdpu2WrvCZPLwsJ2Ey5ILIPccoW23dd/zQBlJ4/dhi7DWNyXCpA==}
@@ -1058,12 +1100,6 @@ packages:
       sqlite3:
         optional: true
 
-  drizzle-zod@0.5.1:
-    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
-    peerDependencies:
-      drizzle-orm: '>=0.23.13'
-      zod: '*'
-
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -1182,6 +1218,9 @@ packages:
   hono@4.5.11:
     resolution: {integrity: sha512-62FcjLPtjAFwISVBUshryl+vbHOjg8rE4uIK/dxyR8GpLztunZpwFmfEvmJCUI7xoGh/Sr3CGCDPCmYxVw7wUQ==}
     engines: {node: '>=16.0.0'}
+
+  hookable@5.5.3:
+    resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
   human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
@@ -1330,6 +1369,9 @@ packages:
   onetime@6.0.0:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
+
+  openapi3-ts@4.4.0:
+    resolution: {integrity: sha512-9asTNB9IkKEzWMcHmVZE7Ts3kC9G7AFHfs8i7caD8HbI76gEjdkId4z/AkP83xdZsH7PLAnnbl47qZkXuxpArw==}
 
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
@@ -1717,6 +1759,14 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
+  yaml@2.5.1:
+    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
+  zhead@2.2.4:
+    resolution: {integrity: sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag==}
+
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
@@ -1726,6 +1776,11 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@asteasolutions/zod-to-openapi@7.1.1(zod@3.23.8)':
+    dependencies:
+      openapi3-ts: 4.4.0
+      zod: 3.23.8
 
   '@biomejs/biome@1.8.3':
     optionalDependencies:
@@ -2054,6 +2109,18 @@ snapshots:
     dependencies:
       hono: 4.5.11
 
+  '@hono/zod-openapi@0.16.0(hono@4.5.11)(zod@3.23.8)':
+    dependencies:
+      '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
+      '@hono/zod-validator': 0.2.2(hono@4.5.11)(zod@3.23.8)
+      hono: 4.5.11
+      zod: 3.23.8
+
+  '@hono/zod-validator@0.2.2(hono@4.5.11)(zod@3.23.8)':
+    dependencies:
+      hono: 4.5.11
+      zod: 3.23.8
+
   '@isaacs/cliui@8.0.2':
     dependencies:
       string-width: 5.1.2
@@ -2143,11 +2210,31 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.21.2':
     optional: true
 
+  '@scalar/hono-api-reference@0.5.145(hono@4.5.11)':
+    dependencies:
+      '@scalar/types': 0.0.7
+      hono: 4.5.11
+
+  '@scalar/openapi-types@0.1.0': {}
+
+  '@scalar/themes@0.9.28': {}
+
+  '@scalar/types@0.0.7':
+    dependencies:
+      '@scalar/openapi-types': 0.1.0
+      '@scalar/themes': 0.9.28
+      '@unhead/schema': 1.11.2
+
   '@types/estree@1.0.5': {}
 
   '@types/node@22.5.4':
     dependencies:
       undici-types: 6.19.8
+
+  '@unhead/schema@1.11.2':
+    dependencies:
+      hookable: 5.5.3
+      zhead: 2.2.4
 
   '@vitest/expect@2.0.5':
     dependencies:
@@ -2305,11 +2392,6 @@ snapshots:
   drizzle-orm@0.33.0(postgres@3.4.4):
     optionalDependencies:
       postgres: 3.4.4
-
-  drizzle-zod@0.5.1(drizzle-orm@0.33.0(postgres@3.4.4))(zod@3.23.8):
-    dependencies:
-      drizzle-orm: 0.33.0(postgres@3.4.4)
-      zod: 3.23.8
 
   eastasianwidth@0.2.0: {}
 
@@ -2530,6 +2612,8 @@ snapshots:
 
   hono@4.5.11: {}
 
+  hookable@5.5.3: {}
+
   human-signals@2.1.0: {}
 
   human-signals@5.0.0: {}
@@ -2641,6 +2725,10 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
+  openapi3-ts@4.4.0:
+    dependencies:
+      yaml: 2.5.1
+
   package-json-from-dist@1.0.0: {}
 
   path-key@3.1.1: {}
@@ -2702,12 +2790,13 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  postcss-load-config@6.0.1(postcss@8.4.45)(tsx@4.19.0):
+  postcss-load-config@6.0.1(postcss@8.4.45)(tsx@4.19.0)(yaml@2.5.1):
     dependencies:
       lilconfig: 3.1.2
     optionalDependencies:
       postcss: 8.4.45
       tsx: 4.19.0
+      yaml: 2.5.1
 
   postcss@8.4.45:
     dependencies:
@@ -2895,7 +2984,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tsup@8.2.4(postcss@8.4.45)(tsx@4.19.0)(typescript@5.5.4):
+  tsup@8.2.4(postcss@8.4.45)(tsx@4.19.0)(typescript@5.5.4)(yaml@2.5.1):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
       cac: 6.7.14
@@ -2907,7 +2996,7 @@ snapshots:
       globby: 11.1.0
       joycon: 3.1.1
       picocolors: 1.1.0
-      postcss-load-config: 6.0.1(postcss@8.4.45)(tsx@4.19.0)
+      postcss-load-config: 6.0.1(postcss@8.4.45)(tsx@4.19.0)(yaml@2.5.1)
       resolve-from: 5.0.0
       rollup: 4.21.2
       source-map: 0.8.0-beta.0
@@ -3023,5 +3112,9 @@ snapshots:
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}
+
+  yaml@2.5.1: {}
+
+  zhead@2.2.4: {}
 
   zod@3.23.8: {}

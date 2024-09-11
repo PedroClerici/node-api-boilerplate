@@ -4,6 +4,7 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"forceConsistentCasingInFileNames": true,
+		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"strict": true,
 		"noUncheckedIndexedAccess": true,

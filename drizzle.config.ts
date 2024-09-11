@@ -12,6 +12,6 @@ export default defineConfig({
 		port: env.DB_PORT,
 		database: env.DB_NAME,
 	},
-	verbose: true,
+	// verbose: true,
 	strict: true,
 });

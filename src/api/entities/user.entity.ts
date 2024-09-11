@@ -1,7 +1,7 @@
-import { Exclude, Transform, Type } from "class-transformer";
+import { Exclude } from "class-transformer";
 
 export class UserEntity {
-	id!: number;
+	id!: string;
 	username!: string;
 	email!: string;
 

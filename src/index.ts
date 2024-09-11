@@ -1,13 +1,30 @@
 import "reflect-metadata";
 import { serve } from "@hono/node-server";
-import { Hono } from "hono";
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { apiReference } from "@scalar/hono-api-reference";
+
 import { env } from "@/config/env";
 import { logger } from "@/config/logger";
-import { users } from "./api/modules/users/users.controller";
+import { loggerMiddleware } from "@/api/middlewares/logger";
+import { errorHandlerMiddleware } from "@/api/middlewares/error-handler";
+import { usersRoutes } from "@/api/modules/users/routes";
 
-const app = new Hono();
+const app = new OpenAPIHono();
 
-app.route("/users", users);
+app.use(loggerMiddleware);
+app.onError(errorHandlerMiddleware);
+
+app.route("/users", usersRoutes);
+
+app.doc("/openapi.json", {
+	openapi: "3.0.0",
+	info: {
+		version: "1.0.0",
+		title: "Node API Boilerplate",
+	},
+});
+
+app.get("/", apiReference({ spec: { url: "/openapi.json" } }));
 
 logger.info(`Server is running on port ${env.PORT}`);
 
