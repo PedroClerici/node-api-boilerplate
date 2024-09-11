@@ -3,33 +3,33 @@ import { getPath } from "hono/utils/url";
 
 import { logger } from "@/config/logger";
 
-export async function loggerMiddleware(ctx: Context, next: Next) {
-	const { method } = ctx.req;
-	const path = getPath(ctx.req.raw);
+export async function loggerMiddleware(c: Context, next: Next) {
+	const { method } = c.req;
+	const path = getPath(c.req.raw);
 
-	logger.info(
+	logger.debug(
 		{
 			request: {
 				method,
 				path,
-				headers: ctx.req.header(),
+				headers: c.req.header(),
 			},
 		},
 		"Incoming request",
 	);
-	ctx.req;
+	c.req;
 
 	const start = Date.now();
 
 	await next();
 
-	const { status } = ctx.res;
+	const { status } = c.res;
 
-	logger.info(
+	logger.debug(
 		{
 			response: {
 				status,
-				ok: String(ctx.res.ok),
+				ok: String(c.res.ok),
 				time: time(start),
 			},
 		},

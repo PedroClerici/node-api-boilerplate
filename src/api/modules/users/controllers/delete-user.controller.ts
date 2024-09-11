@@ -25,11 +25,11 @@ export const deleteUserRoute = createRoute({
 	},
 });
 
-export const deleteUserHandler: Handler = async (ctx) => {
-	const { id } = ctx.req.param() as DeleteUserParams;
+export const deleteUserHandler: Handler = async (c) => {
+	const { id } = c.req.param() as DeleteUserParams;
 
 	logger.debug(`Deleting user with ID ${id}`);
 	await makeDeleteUserService().execute(id);
 
-	return ctx.json({});
+	return c.json({});
 };

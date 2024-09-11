@@ -41,12 +41,12 @@ export const updateUserRoute = createRoute({
 	},
 });
 
-export const updateUserHandler: Handler = async (ctx) => {
-	const { id } = ctx.req.param() as UpdateUserParams;
-	const body = await ctx.req.json<UpdateUserBody>();
+export const updateUserHandler: Handler = async (c) => {
+	const { id } = c.req.param() as UpdateUserParams;
+	const body = await c.req.json<UpdateUserBody>();
 
 	const updatedUser = await makeUpdateUserService().execute(id, body);
 	if (!updatedUser) throw Error("Couldn't update user");
 
-	return ctx.json<UpdateUserResponse>(updatedUser);
+	return c.json<UpdateUserResponse>(updatedUser);
 };

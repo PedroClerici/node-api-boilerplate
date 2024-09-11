@@ -30,9 +30,9 @@ export const getAllUsersRoute = createRoute({
 	},
 });
 
-export const getAllUsersHandler: Handler = async (ctx) => {
+export const getAllUsersHandler: Handler = async (c) => {
 	const users = await makeGetAllUsersService().execute();
 	if (!users) throw new Error("Couldn't fetch users");
 
-	return ctx.json<GetAllUsersResponse>(users);
+	return c.json<GetAllUsersResponse>(users);
 };

@@ -5,8 +5,8 @@ import { apiReference } from "@scalar/hono-api-reference";
 
 import { env } from "@/config/env";
 import { logger } from "@/config/logger";
-import { loggerMiddleware } from "@/api/middlewares/logger";
-import { errorHandlerMiddleware } from "@/api/middlewares/error-handler";
+import { loggerMiddleware } from "@/api/middlewares/logger.middleware";
+import { errorHandlerMiddleware } from "@/api/middlewares/error.middleware";
 import { usersRoutes } from "@/api/modules/users/routes";
 
 const app = new OpenAPIHono();

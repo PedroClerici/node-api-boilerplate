@@ -39,11 +39,11 @@ export const createUserRoute = createRoute({
 	},
 });
 
-export const createUserHandler: Handler = async (ctx) => {
-	const body = await ctx.req.json<CreateUserBody>();
+export const createUserHandler: Handler = async (c) => {
+	const body = await c.req.json<CreateUserBody>();
 
 	const userCreated = await makeCreateUserService().execute(body);
 	if (!userCreated) throw Error("Couldn't create user");
 
-	return ctx.json<CreateUserResponse>(userCreated);
+	return c.json<CreateUserResponse>(userCreated);
 };

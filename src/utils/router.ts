@@ -3,11 +3,11 @@ import { makeError } from "./errors";
 
 export function Router() {
 	return new OpenAPIHono({
-		defaultHook: (result, ctx) => {
+		defaultHook: (result, c) => {
 			if (result.success) return;
 
 			const { error, statusCode } = makeError(result.error);
-			return ctx.json(error, { status: statusCode });
+			return c.json(error, { status: statusCode });
 		},
 	});
 }
